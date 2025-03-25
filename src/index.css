@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -92,10 +93,63 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border selection:bg-teal/20 selection:text-teal;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-dark text-white antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/[0.03] border border-white/10;
+  }
+  
+  .glass-hover {
+    @apply hover:backdrop-blur-md hover:bg-white/[0.06] hover:border hover:border-white/20 transition-all duration-300;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  font-display: swap;
 }
