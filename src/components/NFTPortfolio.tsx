@@ -9,30 +9,30 @@ type NFT = {
   link: string;
 };
 
-// Real NFT images from World of V
+// NFT collection with proper image URLs
 const nftSamples: NFT[] = [
   {
     id: 1,
     title: "Abstract Kingdom NFT #1",
-    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
+    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205500000",
   },
   {
     id: 2,
     title: "Abstract Kingdom NFT #2",
-    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
+    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205400000",
   },
   {
     id: 3,
     title: "Abstract Kingdom NFT #3",
-    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
+    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205200000",
   },
   {
     id: 4,
     title: "Abstract Kingdom NFT #4",
-    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
+    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701204800000",
   }
 ];
@@ -57,7 +57,7 @@ const NFTPortfolio: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {nftSamples.map((nft) => (
             <div
               key={nft.id}
@@ -70,6 +70,7 @@ const NFTPortfolio: React.FC = () => {
                     src={nft.image}
                     alt={nft.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
