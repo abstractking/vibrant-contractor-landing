@@ -31,9 +31,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-dark text-white overflow-hidden">
+    <div className="min-h-screen bg-dark text-white">
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <Portfolio />
         <NFTPortfolio />

@@ -9,31 +9,31 @@ type NFT = {
   link: string;
 };
 
-// Sample NFTs from VeChain (replace with actual data or API)
+// Vechain NFT artwork from World of V
 const nftSamples: NFT[] = [
   {
     id: 1,
-    title: "Digital Dreamscape",
+    title: "Abstract Kingdom NFT #1",
     image: "https://images.unsplash.com/photo-1634986666676-ec9323397571?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    link: "https://www.worldofv.art/nft/0x08be2b09a39c9eb3b27889fa8542d8c28e888a17",
+    link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205500000",
   },
   {
     id: 2,
-    title: "Crypto Genesis",
+    title: "Abstract Kingdom NFT #2",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    link: "https://www.worldofv.art/nft/0x08be2b09a39c9eb3b27889fa8542d8c28e888a18",
+    link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205400000",
   },
   {
     id: 3,
-    title: "Blockchain Dreams",
+    title: "Abstract Kingdom NFT #3",
     image: "https://images.unsplash.com/photo-1646671404230-bfd169a5e207?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    link: "https://www.worldofv.art/nft/0x08be2b09a39c9eb3b27889fa8542d8c28e888a19",
+    link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205200000",
   },
   {
     id: 4,
-    title: "Decentralized Vision",
+    title: "Abstract Kingdom NFT #4",
     image: "https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    link: "https://www.worldofv.art/nft/0x08be2b09a39c9eb3b27889fa8542d8c28e888a20",
+    link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701204800000",
   }
 ];
 
@@ -76,7 +76,7 @@ const NFTPortfolio: React.FC = () => {
     <section 
       id="nft-art" 
       ref={sectionRef}
-      className="py-20 px-6 md:px-10 bg-dark opacity-0"
+      className="py-20 px-6 md:px-10 bg-dark"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
