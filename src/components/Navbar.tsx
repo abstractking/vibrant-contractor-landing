@@ -37,15 +37,15 @@ const Navbar: React.FC = () => {
             href="#" 
             className="text-xl font-display font-medium tracking-tight text-white group"
           >
-            <span className="inline-block pr-1">Portfolio</span>
+            <span className="inline-block pr-1">AIRSOL</span>
             <span className="text-teal inline-block">.dev</span>
           </a>
           
           <nav className="hidden md:flex items-center space-x-8">
-            {['Projects', 'About', 'Contact'].map((item) => (
+            {['Projects', 'NFT Art', 'About', 'Contact'].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
                 className="text-[15px] text-light-gray hover:text-white transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-teal hover:after:w-full after:transition-all after:duration-300"
               >
                 {item}
@@ -70,10 +70,10 @@ const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 flex flex-col pt-24 pb-6 px-6 bg-dark-gray/95 backdrop-blur-lg md:hidden">
           <nav className="flex flex-col space-y-6 mt-8">
-            {['Projects', 'About', 'Contact'].map((item) => (
+            {['Projects', 'NFT Art', 'About', 'Contact'].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
                 className="text-xl font-medium text-white py-2 border-b border-white/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
