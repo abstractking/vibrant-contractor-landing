@@ -1,12 +1,65 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Mail, MessageSquare } from 'lucide-react';
+import { ArrowRight, Mail, MessageSquare, MapPin, Phone } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate form submission - in a real app, send to backend
+      console.log("Form submitted:", formData);
+      console.log("Sending to: biz.abstractkingdom@gmail.com");
+      
+      // Simulate a successful submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "There was an error sending your message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,9 +119,33 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-sm text-light-gray mb-1">Email Address</h4>
-                    <a href="mailto:contact@example.com" className="text-white hover:text-teal transition-colors">
-                      contact@example.com
+                    <a href="mailto:biz.abstractkingdom@gmail.com" className="text-white hover:text-teal transition-colors">
+                      biz.abstractkingdom@gmail.com
                     </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-teal/10 text-teal rounded-lg">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm text-light-gray mb-1">Phone</h4>
+                    <a href="tel:3375408503" className="text-white hover:text-teal transition-colors">
+                      (337) 540-8503
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-teal/10 text-teal rounded-lg">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm text-light-gray mb-1">Location</h4>
+                    <p className="text-white">
+                      Lake Charles, Louisiana, 70607
+                    </p>
                   </div>
                 </div>
                 
@@ -107,8 +184,7 @@ const Contact: React.FC = () => {
               <div className="mt-auto">
                 <div className="p-4 bg-teal/5 rounded-lg border border-teal/10">
                   <p className="text-sm text-light-gray italic">
-                    "The details are not the details. They make the design."
-                    <span className="block mt-2 text-white">— Charles Eames</span>
+                    "Every line of code I write is a step toward a fairer, more inclusive digital world."
                   </p>
                 </div>
               </div>
@@ -118,7 +194,7 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div ref={formRef} className="lg:col-span-3 opacity-0" style={{ animationDelay: '0.4s' }}>
             <div className="bg-dark-gray p-8 rounded-xl border border-white/5">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm text-light-gray mb-2">
@@ -127,8 +203,11 @@ const Contact: React.FC = () => {
                     <input
                       type="text"
                       id="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-medium-gray/20 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal/50 text-white"
                       placeholder="Your name"
+                      required
                     />
                   </div>
                   <div>
@@ -138,8 +217,11 @@ const Contact: React.FC = () => {
                     <input
                       type="email"
                       id="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-medium-gray/20 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal/50 text-white"
                       placeholder="Your email"
+                      required
                     />
                   </div>
                 </div>
@@ -151,8 +233,11 @@ const Contact: React.FC = () => {
                   <input
                     type="text"
                     id="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-medium-gray/20 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal/50 text-white"
                     placeholder="Subject of your message"
+                    required
                   />
                 </div>
                 
@@ -163,16 +248,20 @@ const Contact: React.FC = () => {
                   <textarea
                     id="message"
                     rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-medium-gray/20 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal/50 text-white resize-none"
                     placeholder="Your message here..."
+                    required
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full px-6 py-4 bg-teal text-dark font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-2 group"
+                  disabled={isSubmitting}
+                  className="w-full px-6 py-4 bg-teal text-dark font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70"
                 >
-                  <span>Send Message</span>
+                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                   <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </form>

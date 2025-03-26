@@ -1,12 +1,12 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Code, Layout, Zap } from 'lucide-react';
+import { ArrowRight, Code, Layout, Zap, MapPin, Mail, Phone } from 'lucide-react';
 
 const skills = [
-  { icon: <Layout className="w-5 h-5" />, name: "UI/UX Design", description: "Creating intuitive interfaces with a focus on user experience." },
-  { icon: <Code className="w-5 h-5" />, name: "Web Development", description: "Building responsive, accessible, and performant websites." },
-  { icon: <Zap className="w-5 h-5" />, name: "Optimization", description: "Enhancing site speed and conversion rates through testing." }
+  { icon: <Code className="w-5 h-5" />, name: "Smart Contract Development", description: "Custom solutions on platforms like VeChain, tailored to your vision." },
+  { icon: <Layout className="w-5 h-5" />, name: "Web Design & Development", description: "Simple, striking websites that grab attention and deliver results." },
+  { icon: <Zap className="w-5 h-5" />, name: "Decentralized Solutions", description: "From NFT marketplaces to DAO frameworks, I build tools that empower." }
 ];
 
 const About: React.FC = () => {
@@ -44,33 +44,70 @@ const About: React.FC = () => {
       className="py-20 px-6 md:px-10 bg-dark-gray"
     >
       <div className="max-w-7xl mx-auto opacity-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div ref={contentRef} className="opacity-0" style={{ animationDelay: '0.2s' }}>
             <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase bg-white/5 border border-white/10 rounded-full text-white/80">
               About Me
             </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Crafting Digital Experiences with Precision
+              Who I Am
             </h2>
-            <div className="space-y-4 text-light-gray">
+            <div className="space-y-6 text-light-gray">
               <p>
-                I'm a web contractor with 5+ years of experience, passionate about crafting user-friendly, visually stunning websites that deliver results.
+                I'm Arion Friddle, a Web3 enthusiast hailing from the parish of "Crying Eagle," where my drive to redefine value—creativity, labor, and all—was born. My soul is fueled by a relentless passion to build decentralized solutions that amplify the voices of the overlooked: artists without massive followings and workers yearning for fair recognition. For me, technology isn't just a tool—it's a catalyst to disrupt the status quo and uplift the underdog.
               </p>
+              
+              <h3 className="text-xl font-semibold text-white mt-6">My Mission</h3>
               <p>
-                My approach combines clean aesthetics with functional design, ensuring each project not only looks impressive but performs exceptionally well across all devices.
+                I believe creativity and labor deserve more than the scraps of traditional systems. That's why I pour my energy into crafting decentralized platforms that empower the unseen. Through projects like VeCollab.Art, an NFT marketplace built on VeChain, I'm supporting creators with innovative smart contract logic and community-driven airdrops—giving artists a stage where their work shines, not their follower count. Meanwhile, I'm shaping a DAO that honors true labor, weaving smart contracts with a vision for equity that puts people over profits.
               </p>
+              
+              <h3 className="text-xl font-semibold text-white mt-6">My Roots and Craft</h3>
               <p>
-                I believe in close collaboration with clients, transparent communication, and attention to detail at every stage of the development process.
+                My journey started in web development, where I learned to merge clean code with eye-catching design. Those roots now power my Web3 innovations, blending technical precision with a purpose-driven ethos. Whether I'm coding a sleek website or architecting a decentralized ecosystem, every line I write is a step toward a fairer, more inclusive digital world.
+              </p>
+              
+              <h3 className="text-xl font-semibold text-white mt-6">What I Offer</h3>
+              <p>
+                I bring a versatile skill set to the table for clients who share my hunger for impact.
+                No project is too big or too small—I'm here to turn your ideas into reality.
               </p>
             </div>
-            <div className="mt-8">
-              <a 
-                href="#contact" 
-                className="inline-flex items-center gap-2 text-teal font-medium hover:underline"
-              >
-                <span>Get in Touch</span>
-                <ArrowRight size={16} />
-              </a>
+            
+            <div className="mt-8 space-y-6">
+              <h3 className="text-xl font-semibold text-white">Let's Build Together</h3>
+              <p className="text-light-gray">
+                Ready to reshape how the world sees your work? Contact me today for a quote, and let's craft something extraordinary that honors creativity, labor, and equity.
+              </p>
+              <div className="mt-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-teal" />
+                  <a href="tel:3375408503" className="text-light-gray hover:text-teal transition-colors">
+                    (337) 540-8503
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-teal" />
+                  <a href="mailto:biz.abstractkingdom@gmail.com" className="text-light-gray hover:text-teal transition-colors">
+                    biz.abstractkingdom@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-teal" />
+                  <span className="text-light-gray">
+                    Lake Charles, Louisiana, 70607
+                  </span>
+                </div>
+              </div>
+              <div className="mt-6">
+                <a 
+                  href="#contact" 
+                  className="inline-flex items-center gap-2 text-teal font-medium hover:underline"
+                >
+                  <span>Get in Touch</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
             </div>
           </div>
           
