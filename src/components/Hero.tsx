@@ -7,24 +7,10 @@ const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-        }
-      },
-      { threshold: 0.1 }
-    );
-
+    // Make sure section is visible immediately
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      sectionRef.current.style.opacity = '1';
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
   }, []);
   
   return (
@@ -39,7 +25,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1Ii8+PC9zdmc+')] opacity-30 z-10"></div>
       
       {/* Content */}
-      <div className="relative z-20 max-w-4xl mx-auto text-center opacity-0">
+      <div className="relative z-20 max-w-4xl mx-auto text-center">
         <span className="inline-block px-3 py-1 mb-6 text-xs font-medium tracking-wider uppercase bg-white/5 border border-white/10 rounded-full text-white/80 backdrop-blur-sm">
           Web Contractor & Designer
         </span>
@@ -52,11 +38,11 @@ const Hero: React.FC = () => {
           </span>
         </h1>
         
-        <p className="text-lg md:text-xl text-light-gray max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-delay text-balance">
+        <p className="text-lg md:text-xl text-light-gray max-w-2xl mx-auto mb-10">
           I design and build websites that blend style with performance, creating digital experiences that capture your brand's essence.
         </p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-delay" style={{ animationDelay: '0.3s' }}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a 
             href="#projects" 
             className="flex items-center justify-center gap-2 px-6 py-3 bg-teal text-dark font-medium rounded-lg hover:bg-opacity-90 transition-all duration-300 group w-full sm:w-auto"

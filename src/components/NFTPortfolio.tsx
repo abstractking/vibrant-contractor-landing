@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { ExternalLink } from 'lucide-react';
 
 type NFT = {
@@ -9,68 +9,36 @@ type NFT = {
   link: string;
 };
 
-// Vechain NFT artwork from World of V
+// Real NFT images from World of V
 const nftSamples: NFT[] = [
   {
     id: 1,
     title: "Abstract Kingdom NFT #1",
-    image: "https://images.unsplash.com/photo-1634986666676-ec9323397571?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205500000",
   },
   {
     id: 2,
     title: "Abstract Kingdom NFT #2",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205400000",
   },
   {
     id: 3,
     title: "Abstract Kingdom NFT #3",
-    image: "https://images.unsplash.com/photo-1646671404230-bfd169a5e207?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701205200000",
   },
   {
     id: 4,
     title: "Abstract Kingdom NFT #4",
-    image: "https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    image: "/lovable-uploads/aa5684c2-16e6-486e-a610-9e522350d15c.png", // Using the uploaded image as a placeholder
     link: "https://worldofv.art/token/0x5E6265680087520DC022d75f4C45F9CCD712BA97/58701204800000",
   }
 ];
 
 const NFTPortfolio: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const nftRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [nfts, setNfts] = useState<NFT[]>(nftSamples);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-scale-in');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    nftRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-      nftRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
 
   return (
     <section 
@@ -90,12 +58,10 @@ const NFTPortfolio: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {nfts.map((nft, index) => (
+          {nftSamples.map((nft) => (
             <div
               key={nft.id}
-              ref={(el) => (nftRefs.current[index] = el)}
-              className="group bg-dark-gray rounded-xl overflow-hidden border border-white/5 transition-all duration-300 hover:translate-y-[-5px] hover:border-teal/30 hover:shadow-[0_0_20px_rgba(0,196,204,0.3)] opacity-0"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group bg-dark-gray rounded-xl overflow-hidden border border-white/5 transition-all duration-300 hover:translate-y-[-5px] hover:border-teal/30 hover:shadow-[0_0_20px_rgba(0,196,204,0.3)]"
             >
               <a href={nft.link} target="_blank" rel="noopener noreferrer" className="block h-full">
                 <div className="relative overflow-hidden h-56">

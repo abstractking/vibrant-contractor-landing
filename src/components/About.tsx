@@ -1,6 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
+import React, { useRef } from 'react';
 import { ArrowRight, Code, Layout, Zap, MapPin, Mail, Phone } from 'lucide-react';
 
 const skills = [
@@ -11,31 +10,6 @@ const skills = [
 
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    if (contentRef.current) observer.observe(contentRef.current);
-    if (skillsRef.current) observer.observe(skillsRef.current);
-
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
-      if (contentRef.current) observer.unobserve(contentRef.current);
-      if (skillsRef.current) observer.unobserve(skillsRef.current);
-    };
-  }, []);
 
   return (
     <section 
@@ -43,9 +17,9 @@ const About: React.FC = () => {
       ref={sectionRef}
       className="py-20 px-6 md:px-10 bg-dark-gray"
     >
-      <div className="max-w-7xl mx-auto opacity-0">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div ref={contentRef} className="opacity-0" style={{ animationDelay: '0.2s' }}>
+          <div>
             <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider uppercase bg-white/5 border border-white/10 rounded-full text-white/80">
               About Me
             </span>
@@ -111,7 +85,7 @@ const About: React.FC = () => {
             </div>
           </div>
           
-          <div ref={skillsRef} className="opacity-0" style={{ animationDelay: '0.4s' }}>
+          <div>
             <div className="relative">
               {/* Profile Image */}
               <div className="relative z-10 mx-auto lg:ml-0 w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white/10 mb-8">
